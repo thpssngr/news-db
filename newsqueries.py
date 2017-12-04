@@ -19,48 +19,39 @@ cursor = c.cursor()
 
 # get the article titles and their count from the view "top_articles"
 cursor.execute(
-    "select title from top_articles")
-articles = cursor.fetchall()
-cursor.execute(
-    "select count from top_articles")
-views = cursor.fetchall()
+    "select title,count from top_articles")
+results = cursor.fetchall()
 
 # format the result as an easy to read list
 print "\n1. WHAT ARE THE MOST POPULAR THREE ARTICLES OF ALL TIME?\n"
-for title, number in zip(articles, views):
-    title = "".join(title)
-    number = number[0]
+for title, number in results:
     print '"'+title+'" - ' + str(number) + ' views'
+# for title, number in zip(articles, views):
+#     title = "".join(title)
+#     number = number[0]
+#     print '"'+title+'" - ' + str(number) + ' views'
 
 # 2. Who are the most popular article authors of all time?
 
 # get the author names and their total page view count
 # from the view "top_authors"
 cursor.execute(
-    "select name from top_authors")
-authors = cursor.fetchall()
-cursor.execute(
-    "select sum from top_authors")
-totals = cursor.fetchall()
+    "select name, sum from top_authors")
+results = cursor.fetchall()
 
 # format the result as an easy to read list
 print "\n2. WHO ARE THE MOST POPULAR ARTICLE AUTHORS OF ALL TIME?\n"
-for name, number in zip(authors, totals):
-    name = "".join(name)
-    number = number[0]
-    print '"'+name+'" - ' + str(number) + ' views'
+for name, sum in results:
+    print '"'+name+'" - ' + str(sum) + ' views'
 
 # 3. On which days did more than 1% of requests lead to errors?
 cursor.execute(
-    "select dates from percentages")
-dates = cursor.fetchall()
-cursor.execute(
-    "select percent from percentages")
-percent = cursor.fetchall()
+    "select dates, percent from percentages")
+results = cursor.fetchall()
 
 # format the result as an easy to read list
 print "\n1. ON WHICH DAYS DID MORE THAN 1% OF REQUESTS LEAD TO ERRORS?\n"
-for day, number in zip(dates, percent):
+for day, number in results:
     day = str(day[0])
     number = str(number[0])
     number = "".join(number)
