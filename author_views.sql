@@ -27,4 +27,4 @@ from authors join  author_pageviews
 on authors.id = author_pageviews.author;
 
 --Print view to csv file
-\copy (select * from top_authors) To '/vagrant/news/author_views_output.csv' With CSV Header
+\copy (select * from top_authors) To '/vagrant/author_views_output.csv' With CSV Header

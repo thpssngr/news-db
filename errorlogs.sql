@@ -34,4 +34,4 @@ where percent > 1.0
 ;
 
 --Print view to csv file
-\copy (select * from percentages) To '/vagrant/news/errorlogs_output.csv' With CSV Header
+\copy (select * from percentages) To '/vagrant/errorlogs_output.csv' With CSV Header

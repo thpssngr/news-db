@@ -21,4 +21,4 @@ limit 3
 ;
 
 --Print view to csv file
-\copy (select * from top_articles) To '/vagrant/news/page_views_output.csv' With CSV Header
+\copy (select * from top_articles) To '/vagrant/page_views_output.csv' With CSV Header
