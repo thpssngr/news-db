@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import psycopg2
 import os
-import time
 
 # this program allow querying the news db provided as part of the IPND
 # nanodegree backend project, and to get back results for different questions
