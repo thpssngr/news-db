@@ -7,7 +7,7 @@ import time
 # nanodegree backend project, and to get back results for different questions
 # about the data included.
 
-#connect to the new database via the postgresql module
+# connect to the new database via the postgresql module
 c = psycopg2.connect("dbname=news")
 cursor = c.cursor()
 os.system('psql -d news -a -f page_views.sql')
@@ -19,10 +19,10 @@ os.system('psql -d news -a -f errorlogs.sql')
 
 # get the article titles and their count from the view "top_articles"
 cursor.execute(
-"select title from top_articles")
+    "select title from top_articles")
 articles = cursor.fetchall()
 cursor.execute(
-"select count from top_articles")
+    "select count from top_articles")
 views = cursor.fetchall()
 
 # format the result as an easy to read list
@@ -34,12 +34,13 @@ for title, number in zip(articles, views):
 
 # 2. Who are the most popular article authors of all time?
 
-# get the author names and their total page view count from the view "top_authors"
+# get the author names and their total page view count
+# from the view "top_authors"
 cursor.execute(
-"select name from top_authors")
+    "select name from top_authors")
 authors = cursor.fetchall()
 cursor.execute(
-"select sum from top_authors")
+    "select sum from top_authors")
 totals = cursor.fetchall()
 
 # format the result as an easy to read list
@@ -51,14 +52,14 @@ for name, number in zip(authors, totals):
 
 # 3. On which days did more than 1% of requests lead to errors?
 cursor.execute(
-"select dates from percentages")
+    "select dates from percentages")
 dates = cursor.fetchall()
 cursor.execute(
-"select percent from percentages")
+    "select percent from percentages")
 percent = cursor.fetchall()
 
 # format the result as an easy to read list
-print "\n1. ON WHICH DAYS DID MORE THAN 1 PERCENT OF REQUESTS LEAD TO ERRORS?\n"
+print "\n1. ON WHICH DAYS DID MORE THAN 1 PERCENT OF REQUESTS LEAD TO ERRORS?"
 for day, number in zip(dates, percent):
     day = str(day[0])
     number = str(number[0])
