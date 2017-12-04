@@ -52,8 +52,8 @@ results = cursor.fetchall()
 # format the result as an easy to read list
 print "\n1. ON WHICH DAYS DID MORE THAN 1% OF REQUESTS LEAD TO ERRORS?\n"
 for day, number in results:
-    day = str(day[0])
-    number = str(number[0])
+    day = str(day)
+    number = str(number)
     number = "".join(number)
 
     print day+' - ' + number + '% errors\n'
